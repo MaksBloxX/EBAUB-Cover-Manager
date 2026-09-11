@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBAUB Cover Manager — Report / Assignment Cover Maker</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="vendor/html2canvas.min.js"></script>
+<script src="vendor/jspdf.umd.min.js"></script>
+</head>
+<body data-mtab="editor">
+
+<div class="topbar">
+  <img src="assets/logo-exim-header.png" alt="EXIM Bank">
+  <div>
+    <h1>EBAUB Cover Manager</h1>
+    <p>All Faculties — Report / Assignment Cover Maker</p>
+  </div>
+</div>
+
+<!-- MOBILE ONLY: Editor / Preview switch -->
+<div class="mobile-tabs">
+  <button id="tabEditor" class="mtab active" onclick="switchTab('editor')">Editor</button>
+  <button id="tabPreview" class="mtab" onclick="switchTab('preview')">Preview</button>
+</div>
+
+<div class="layout">
+  <!-- LEFT: simple form -->
+  <div class="card left-col">
+    <h2>Fill Up the Form</h2>
+
+    <div class="field">
+      <label>Cover Design</label>
+      <select id="tplSelect">
+        <option value="lab">Standard Report</option>
+        <option value="classic">Assignment/Report</option>
+        <option value="gold">Other Varsity</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label id="logoLabel">Dept Logo (optional)</label>
+      <input id="logoInput" type="file" accept="image/*">
+    </div>
+    <div class="field lab-only">
+      <label>University Logo (optional)</label>
+      <input id="logoInputR" type="file" accept="image/*">
+    </div>
+
+    <div id="groupModern" style="display:none">
+      <div class="field classic-only"><label>Eyebrow (small text)</label><input id="eyebrow" value="AN ASSIGNMENT ON"></div>
+      <div class="field"><label>Assignment / Experiment Title</label><input id="topic" placeholder="Introduction of Von Neumann Architecture"></div>
+    </div>
+
+    <div class="field lab-only"><label>Cover Title</label><input id="coverTitle" value="LAB REPORT" placeholder="LAB REPORT / ASSIGNMENT / THESIS"></div>
+
+    <div class="row2">
+      <div class="field"><label>Course Name</label><input id="courseTitle" placeholder="Computer Fundamental"></div>
+      <div class="field"><label>Course Code</label><input id="courseCode" placeholder="CSE 0611 3101"></div>
+    </div>
+
+    <div id="groupModern2" style="display:none">
+      <div class="field classic-only"><label>University Name</label><input id="mUniv" value="Exim Bank Agricultural University Bangladesh"></div>
+      <div class="field classic-only"><label>Department</label><input id="mDept" value="Computer Science and Engineering"></div>
+    </div>
+
+    <div id="groupLab">
+      <div class="row2">
+        <div class="field"><label>Experiment No</label><input id="expNo" placeholder="01"></div>
+        <div class="field"><label>Experiment Name</label><input id="expName" placeholder="introduction of Computer Fundamental"></div>
+      </div>
+      <div class="field"><label>University Name</label><input id="univ" value="Exim Bank Agricultural University Bangladesh"></div>
+      <div class="field"><label>Faculty (logo auto)</label>
+        <select id="faculty">
+          <option value="Faculty of Engineering" selected>Faculty of Engineering (CSE)</option>
+          <option value="Faculty of Agriculture">Faculty of Agriculture</option>
+          <option value="Faculty of Agricultural Economics and Rural Development">Faculty of Agricultural Economics &amp; Rural Development</option>
+          <option value="Faculty of Business Administration">Faculty of Business Administration (BBA)</option>
+          <option value="Faculty of Law">Faculty of Law</option>
+          <option value="">— None (hide line) —</option>
+        </select>
+      </div>
+      <div class="field"><label>Department</label><input id="dept" value="Computer Science and Engineering"></div>
+    </div>
+
+    <div class="sec">Student</div>
+    <div class="field"><label>Student Name</label><input id="sName" placeholder="Your full name"></div>
+    <div class="row2">
+      <div class="field"><label>Reg.No</label><input id="sId" placeholder="0602510005101001"></div>
+      <div class="field"><label>Date</label><input id="date" type="date"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Semester</label><input id="semester" placeholder="1st - 1st"></div>
+      <div class="field"><label>Batch / Session</label><input id="batch" placeholder="40th or 2025-26"></div>
+    </div>
+
+    <div class="sec">Teacher</div>
+    <div class="field"><label>Teacher Name</label><input id="tName" placeholder="Teacher name"></div>
+    <div class="field"><label>Designation</label><input id="tDesig" placeholder="Lecturer"></div>
+
+    <label class="checkline" id="wmRow"><input type="checkbox" id="showWatermark" checked> Show watermark logo</label>
+    <div class="field lab-only">
+      <label>Background logo opacity: <span id="wmVal">6%</span></label>
+      <input id="wmOpacity" type="range" min="0" max="30" value="6">
+    </div>
+
+    <button class="btn btn-dl" onclick="downloadPDF()">PDF Download</button>
+    <button class="btn btn-print" onclick="doPrint()">Print</button>
+    <div class="guarantee" id="status">One-page guaranteed</div>
+  </div>
+
+  <!-- RIGHT: A4 preview -->
+  <div class="preview-col">
+    <div class="zoombar">
+      <button class="zbtn" onclick="zoomStep(-0.1)">-</button>
+      <span id="zoomLabel">100%</span>
+      <button class="zbtn" onclick="zoomStep(0.1)">+</button>
+      <button class="zbtn" onclick="zoomFit()">Fit</button>
+    </div>
+    <div class="preview-box" id="previewBox">
+      <div class="a4-scaler" id="scaler">
+        <div class="a4" id="coverPage"></div>
+      </div>
+    </div>
+    <div class="caption">Type on the left, live preview on the right</div>
+  </div>
+</div>
+
+<footer class="site-foot" style="text-align:center;font-size:12px;color:#475569;background:#eef4ff;border-top:1px solid #d7e3ff;margin-top:16px;padding:14px 12px;line-height:1.8">Developed by <b>Md. Makshedul Islam</b><br>For any problem or suggestion, contact: <a id="footMail" href="#" style="color:#2563eb">Email me</a><script>(function(){var u="mrpremium111",d="gmail.com";var a=document.getElementById("footMail");if(a){a.href="mailto:"+u+"@"+d;a.textContent=u+"@"+d;}})();</script></footer>
+<style>@media print{footer.site-foot{display:none!important}}</style>
+<script src="js/app.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a39552b0c84ca488',t:'MTc4OTExNTU1OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
