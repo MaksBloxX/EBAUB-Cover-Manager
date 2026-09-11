@@ -323,7 +323,31 @@ async function downloadPDF() {
 }
 
 function flash(msg) { $("status").textContent = msg; }
-function doPrint() { window.print(); }
+
+function doPrint() {
+  // Fix: on desktop Chrome/Edge the page flashes white for an instant
+  // before the print dialog opens, because the browser has to resolve
+  // the zoomed preview transform live. Resolving it ourselves first
+  // (same trick already used for PDF export) removes that reflow, so
+  // there's no blink. Mobile never showed this because it prints
+  // differently, and PDF export already avoided it this way.
+  const sc = $("scaler");
+  const oldT = sc.style.transform, oldW = sc.style.width, oldH = sc.style.height;
+  sc.style.transform = "none"; sc.style.width = ""; sc.style.height = "";
+
+  const restore = () => {
+    sc.style.transform = oldT; sc.style.width = oldW; sc.style.height = oldH;
+    window.removeEventListener("afterprint", restore);
+  };
+  window.addEventListener("afterprint", restore);
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    window.print();
+    // Safari desktop doesn't always fire afterprint reliably, so also
+    // restore on a short fallback timer.
+    setTimeout(restore, 1000);
+  }));
+}
 
 /* mobile tabs: Editor <-> Preview */
 function switchTab(which) {

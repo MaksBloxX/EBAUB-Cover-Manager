@@ -153,7 +153,6 @@ table.c-tab tr.chead td{background:#1e3a8a;color:#fff;font-weight:700;font-size:
 .c-line{font-size:12pt;line-height:2}
 .m-date{display:block;width:64%;margin:0 auto;text-align:left}
 
-/* ---------- print: only A4 ---------- */
 /* ---------- mobile: Editor / Preview tabs ---------- */
 .mobile-tabs{display:none}
 @media(max-width:1000px){
