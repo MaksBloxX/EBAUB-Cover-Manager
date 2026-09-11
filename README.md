@@ -49,9 +49,9 @@ cover-manager/
 
 ## Deploy free (GitHub Pages)
 
-1. Create a repo (e.g. `ebaub-cover-manager`) and upload **all files above**
+1. Upload all files to your repo (`MaksBloxX/EBAUB-Cover-Manager`)
 2. Repo → Settings → Pages → Deploy from branch → `main` / root
-3. Your site goes live at `https://<username>.github.io/ebaub-cover-manager/`
+3. Your site goes live at `https://maksbloxx.github.io/EBAUB-Cover-Manager/`
 
 Also works on Netlify Drop, Vercel, Tiiny.host — just drag & drop the folder.
 
@@ -68,6 +68,6 @@ Safe: tables, flex rows/columns, literal colors, margins, padding.
 ## Credits
 
 Developed by **Md. Makshedul Islam**
-For any problem or suggestion: mrpremium111@gmail.com
+Questions or suggestions? Open an issue: https://github.com/MaksBloxX/EBAUB-Cover-Manager/issues
 
 Free to use for educational purposes.
