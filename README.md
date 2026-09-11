@@ -73,3 +73,19 @@ Developed by **Md. Makshedul Islam**
 Questions or suggestions? Open an issue: https://github.com/MaksBloxX/EBAUB-Cover-Manager/issues
 
 Free to use for educational purposes.
+
+## Previews
+
+### For PC/Laptop:
+
+<img width="1240" height="1354" alt="image" src="https://github.com/user-attachments/assets/871084e4-59e8-4f21-aa01-5e8cc211d8c2" />
+
+
+### For Mobile:
+
+<img width="360" height="1569" alt="image" src="https://github.com/user-attachments/assets/33dab14e-4ce1-48cb-8342-ebf2ed9782b0" />
+
+
+<img width="360" height="835" alt="image" src="https://github.com/user-attachments/assets/cc38a0fc-ca17-4afd-b496-02e67989e680" />
+
+
