@@ -55,6 +55,8 @@ cover-manager/
 
 Also works on Netlify Drop, Vercel, Tiiny.host — just drag & drop the folder.
 
+Here is [Click me](https://maksbloxx.github.io/EBAUB-Cover-Manager/)
+
 ## Developer note: PDF-safe CSS
 
 PDF is rendered with `html2canvas`, which doesn't support everything. In cover CSS avoid:
