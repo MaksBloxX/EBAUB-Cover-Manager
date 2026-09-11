@@ -18,10 +18,10 @@ const DEFAULT_DATA = {
   tName: "", tDesig: "Lecturer",
   coverTitle: "LAB REPORT",
   dept: "Computer Science and Engineering",
-  univ: "Exim Bank Agricultural University Bangladesh",
+  univ: "EXIM Bank Agricultural University Bangladesh",
   faculty: "Faculty of Engineering",
   eyebrow: "AN ASSIGNMENT ON",
-  mUniv: "Exim Bank Agricultural University Bangladesh",
+  mUniv: "EXIM Bank Agricultural University Bangladesh",
   mDept: "Computer Science and Engineering",
   wmOpacity: 6,
   date: "",
@@ -135,7 +135,7 @@ function tplLab(d) {
     <div class="lab-head">
       ${(state.logoURL || (d.faculty && d.faculty.trim()) ? `<span class="lab-logo-l"><img class="lab-logo-li" src="${mainLogo()}" alt=""></span>` : "<span class=\"lab-logo-l\"></span>")}
       <div class="lab-uni">
-        <div class="u1">${val(d.univ, "Exim Bank Agricultural University Bangladesh")}</div>
+        <div class="u1">${val(d.univ, "EXIM Bank Agricultural University Bangladesh")}</div>
         ${(d.faculty && d.faculty.trim() ? '<div class="uf">' + esc(d.faculty) + '</div>' : "")}
         <div class="u2">Department of</div>
         <div class="u3">${val(d.dept, "Computer Science and Engineering")}</div>
@@ -161,7 +161,7 @@ function tplLab(d) {
         <td style="line-height:1.7">
           ${val(d.tName, "Teacher Name")}<br>${val(d.tDesig)}<br>
           Department of ${val(d.dept, "Computer Science and Engineering")}<br>
-          ${val(d.univ, "Exim Bank Agricultural University Bangladesh")}
+          ${val(d.univ, "EXIM Bank Agricultural University Bangladesh")}
         </td>
       </tr>
     </table>
@@ -180,7 +180,7 @@ function tplClassic(d) {
   <div class="mod-frame">
     <div class="mod-inner">
       <div class="m-logo-box"><img class="m-logo" src="${univLogo()}" alt=""></div>
-      <div class="m-uni">${val(d.mUniv, "Exim Bank Agricultural University Bangladesh")}</div>
+      <div class="m-uni">${val(d.mUniv, "EXIM Bank Agricultural University Bangladesh")}</div>
       <div class="m-dept">Department of ${val(d.mDept, "Computer Science and Engineering")}</div>
       <div class="m-rule"></div>
       <div class="m-eyebrow">${val(d.eyebrow, "AN ASSIGNMENT ON")}</div>
@@ -204,7 +204,7 @@ function tplClassic(d) {
             <div class="c-line">${val(d.tName, "Teacher Name")}</div>
             <div class="c-line">${val(d.tDesig)}</div>
             <div class="c-line">Department of ${val(d.mDept, "Computer Science and Engineering")}</div>
-            <div class="c-line">${val(d.mUniv, "Exim Bank Agricultural University Bangladesh")}</div>
+            <div class="c-line">${val(d.mUniv, "EXIM Bank Agricultural University Bangladesh")}</div>
           </div>
         </div>
         <div class="c-date">Date of submission: ${fmtLong(d.date)}</div>
@@ -221,7 +221,7 @@ function tplModern(d) {
   <div class="mod-frame">
     <div class="mod-inner">
       <div class="m-logo-box"><img class="m-logo" src="${univLogo()}" alt=""></div>
-      <div class="m-uni">${val(d.mUniv, "Exim Bank Agricultural University Bangladesh")}</div>
+      <div class="m-uni">${val(d.mUniv, "EXIM Bank Agricultural University Bangladesh")}</div>
       <div class="m-dept">Department of ${val(d.mDept, "Computer Science and Engineering")}</div>
       <div class="m-rule"></div>
       <div class="m-eyebrow">${val(d.eyebrow, "ASSIGNMENT")}</div>
