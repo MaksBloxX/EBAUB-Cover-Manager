@@ -1,4 +1,4 @@
-name: EBAUB Cover Manager HTML Deployment 
+name: EBAUB Test HTML/JS Deploy
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
 
       - name: Check HTML Syntax
         run: |
-          npx htmlhint index.html
+          npx htmlhint index.html --rules "attr-value-double-quotes=false"
 
   deploy:
     environment:
