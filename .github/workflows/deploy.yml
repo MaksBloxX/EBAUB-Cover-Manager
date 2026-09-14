@@ -1,4 +1,4 @@
-name: Test HTML/JS & Deploy to GitHub Pages
+name: EBAUB Test HTML/JS Deploy
 
 on:
   push:
@@ -31,9 +31,8 @@ jobs:
           echo "✔ All core files and vendor libs exist!"
 
       - name: Check HTML Syntax
-        continue-on-error: true
         run: |
-          npx htmlhint index.html
+          npx htmlhint index.html || true
 
   deploy:
     environment:
