@@ -25,7 +25,8 @@ const DEFAULT_DATA = {
   mDept: "Computer Science and Engineering",
   wmOpacity: 6,
   date: "",
-  showWatermark: true
+  showWatermark: true,
+  showSig: false
 };
 
 let state = {
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   FIELD_IDS.forEach(id => $(id).addEventListener("input", syncFromForm));
   $("tplSelect").addEventListener("change", (e) => setTemplate(e.target.value));
   $("showWatermark").addEventListener("change", syncFromForm);
+  $("showSig").addEventListener("change", syncFromForm);
   $("logoInput").addEventListener("change", (e) => {
     const f = e.target.files[0];
     if (!f) return;
@@ -73,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function syncFromForm() {
   FIELD_IDS.forEach(id => state.data[id] = $(id).value.trim());
   state.data.showWatermark = $("showWatermark").checked;
+  state.data.showSig = $("showSig").checked;
   renderPreview();
 }
 
@@ -86,6 +89,7 @@ function setTemplate(tpl) {
   $("wmRow").style.display = isLab ? "" : "none";
   document.querySelectorAll(".lab-only").forEach(el => el.style.display = isLab ? "" : "none");
   document.querySelectorAll(".classic-only").forEach(el => el.style.display = (state.template !== "lab") ? "" : "none");
+  document.querySelectorAll(".d2-only").forEach(el => el.style.display = (tpl === "classic") ? "" : "none");
   $("logoLabel").textContent = isLab ? "Dept Logo (optional)" : "University Logo (optional)";
   renderPreview();
   fitPreview();
@@ -155,7 +159,7 @@ function tplLab(d) {
       <tr class="head"><td>Submitted By</td><td>Submitted To</td></tr>
       <tr>
         <td style="line-height:2">
-          <b>Name:</b> ${val(d.sName)}<br><b>Reg.No:</b> ${val(d.sId)}<br>
+          ${val(d.sName, "Your name")}<br><b>Reg.No:</b> ${val(d.sId)}<br>
           <b>Semester:</b> ${val(d.semester)}<br><b>Batch:</b> ${val(d.batch)}
         </td>
         <td style="line-height:1.7">
@@ -194,7 +198,7 @@ function tplClassic(d) {
         <div class="c-two">
           <div class="c-col">
             <div class="c-head">Submitted By:</div>
-            <div class="c-line"><b>Name:</b> ${val(d.sName, "Your name")}</div>
+            <div class="c-line">${val(d.sName, "Your name")}</div>
             <div class="c-line"><b>Reg.No:</b> ${val(d.sId)}</div>
             <div class="c-line"><b>Semester:</b> ${val(d.semester)}</div>
             <div class="c-line"><b>Batch:</b> ${val(d.batch)}</div>
@@ -208,6 +212,7 @@ function tplClassic(d) {
           </div>
         </div>
         <div class="c-date">Date of submission: ${fmtLong(d.date)}</div>
+        ${d.showSig ? '<div class="c-sign"><span class="line">Signature of Instructor</span></div>' : ""}
       </div>
     </div>
   </div>`;
