@@ -99,7 +99,7 @@ table.cov tr.head td{background:#c9c9c9;font-weight:700;font-size:14.5pt;padding
 ===================================================== */
 .mod{padding:9mm}
 .mod-frame{height:100%;padding:2.2mm}
-.mod-inner{height:100%;padding:9mm 10mm;display:flex;flex-direction:column;align-items:center;text-align:center}
+.mod-inner{height:100%;padding:9mm 10mm;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
 /* --- theme: classic blue --- */
 .mod-blue{background:#ffffff}
 .mod-blue .mod-frame{border:2px solid #1e3a8a}
@@ -147,7 +147,7 @@ table.c-tab{width:100%;border-collapse:collapse}
 table.c-tab td{border:1px solid #1e3a8a;padding:2.6mm 3mm;font-size:12.5pt;vertical-align:top;text-align:left;line-height:2}
 table.c-tab tr.chead td{background:#1e3a8a;color:#fff;font-weight:700;font-size:13.5pt;line-height:1.4}
 .c-date{text-align:left;font-size:12.5pt;font-weight:700;margin-top:8mm}
-.c-sign{text-align:right;margin-top:10mm}
+.c-sign{position:absolute;right:6mm;bottom:9mm;text-align:right}
 .c-sign .line{border-top:1px solid #000;display:inline-block;min-width:55mm;padding-top:1.5mm;font-style:italic;font-size:12pt}
 .c-two{display:flex;width:100%;text-align:left}
 .c-col{width:50%}
