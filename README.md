@@ -106,17 +106,11 @@ The surrounding app UI (`body`, cards, form, dark theme) may use any modern CSS 
 
 ## 📱 Mobile preview
 
-Editor tab and Preview tab. Drop your two screenshots here:
+Editor tab · form · Preview tab — all in one row.
 
-
-
-<p align="center">
-  <img width="280" alt="Mobile — Editor tab" src="previews/mobile-1.png">
-  &nbsp;&nbsp;
-  <img width="280" alt="Mobile — Editor tab" src="previews/mobile-2.png">
-  &nbsp;&nbsp;
-  <img width="280" alt="Mobile — Preview tab" src="previews/mobile-3.png">
-</p>
+| | | |
+| :---: | :---: | :---: |
+| <img src="previews/mobile-1.png" width="240" alt="Mobile — Editor"> | <img src="previews/mobile-2.png" width="240" alt="Mobile — Form"> | <img src="previews/mobile-3.png" width="240" alt="Mobile — Preview"> |
 
 ---
 
