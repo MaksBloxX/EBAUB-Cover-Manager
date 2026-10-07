@@ -69,7 +69,7 @@ Safe: tables, flex rows/columns, literal colors, margins, padding.
 ## Credits
 
 Developed by **Md. Makshedul Islam**
-Questions or suggestions? Open an issue: https://github.com/MaksBloxX/EBAUB-Cover-Manager/issues
+Questions or suggestions? [Open an issue](https://github.com/MaksBloxX/EBAUB-Cover-Manager/issues)
 
 Free to use for educational purposes.
 
