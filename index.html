@@ -16,6 +16,7 @@
     <h1>EBAUB Cover Manager</h1>
     <p>All Faculties — Report / Assignment Cover Maker</p>
   </div>
+  <button id="themeToggle" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode"><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></svg></button>
 </div>
 
 <!-- MOBILE ONLY: Editor / Preview switch -->
@@ -29,22 +30,27 @@
   <div class="card left-col">
     <h2>Fill Up the Form</h2>
 
-    <div class="field">
-      <label>Cover Design</label>
-      <select id="tplSelect">
-        <option value="lab">Standard Report</option>
-        <option value="classic">Assignment/Report</option>
-        <option value="gold">Other Varsity</option>
-      </select>
+    <div class="sec">Cover Design</div>
+    <div class="design-cards" id="designCards">
+      <button type="button" class="design-card active" data-tpl="lab" onclick="pickDesign('lab')"><span class="thumb thumb-lab"><span></span></span><span class="dc-name">Standard Report</span><span class="dc-sub">Official EBAUB format</span></button>
+      <button type="button" class="design-card" data-tpl="classic" onclick="pickDesign('classic')"><span class="thumb thumb-classic"><span></span></span><span class="dc-name">Assignment/Report</span><span class="dc-sub">Classic navy blue</span></button>
+      <button type="button" class="design-card" data-tpl="gold" onclick="pickDesign('gold')"><span class="thumb thumb-gold"><span></span></span><span class="dc-name">Other Varsity</span><span class="dc-sub">Royal maroon + gold</span></button>
     </div>
+    <select id="tplSelect" style="display:none">
+      <option value="lab">Standard Report</option>
+      <option value="classic">Assignment/Report</option>
+      <option value="gold">Other Varsity</option>
+    </select>
 
-    <div class="field">
-      <label id="logoLabel">Dept Logo (optional)</label>
-      <input id="logoInput" type="file" accept="image/*">
-    </div>
+    <div class="sec">Cover Content</div>
+
     <div class="field lab-only">
       <label>University Logo (optional)</label>
       <input id="logoInputR" type="file" accept="image/*">
+    </div>
+    <div class="field">
+      <label id="logoLabel">Dept Logo (optional)</label>
+      <input id="logoInput" type="file" accept="image/*">
     </div>
 
     <div id="groupModern" style="display:none">
@@ -112,6 +118,7 @@
 
   <!-- RIGHT: A4 preview -->
   <div class="preview-col">
+    <div class="preview-head"><span id="previewLabel">Live preview — Standard Report</span><span class="a4badge">A4 · 210×297 mm</span></div>
     <div class="zoombar">
       <button class="zbtn" onclick="zoomStep(-0.1)">-</button>
       <span id="zoomLabel">100%</span>
@@ -130,6 +137,5 @@
 <footer class="site-foot" style="text-align:center;font-size:12px;color:#475569;background:#eef4ff;border-top:1px solid #d7e3ff;margin-top:16px;padding:14px 12px;line-height:1.8">Developed by <b>Md. Makshedul Islam</b><br>For any problem or suggestion, contact: <a id="footMail" href="#" style="color:#2563eb">Email me</a><script>(function(){var u="mrpremium111",d="gmail.com";var a=document.getElementById("footMail");if(a){a.href="mailto:"+u+"@"+d;a.textContent=u+"@"+d;}})();</script></footer>
 <style>@media print{footer.site-foot{display:none!important}}</style>
 <script src="js/app.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3adb8deec4ffc55',t:'MTc4OTM3MTQwMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,27 +1,55 @@
-# EBAUB Cover Manager
+# 🎓 EBAUB Cover Manager
 
-Report / Assignment cover page maker for **Exim Bank Agricultural University Bangladesh (EBAUB)** — all faculties.
+Report / assignment cover page maker for **Exim Bank Agricultural University Bangladesh (EBAUB)** — all faculties.
 
-Fill up the form → live A4 preview → download 1-page PDF. No login, no database, works offline.
+Fill up the form → live A4 preview → download a 1-page PDF. No login, no database, works offline.
 
-## Designs
+<p align="center">
+  <a href="https://maksbloxx.github.io/EBAUB-Cover-Manager/"><strong>Open live demo →</strong></a>
+</p>
 
-| # | Design | Style |
-|---|--------|-------|
-| 1 | Standard Report | Official lab-report format (EBAUB) |
-| 2 | Assignment/Report | Classic navy blue |
-| 3 | Other Varsity | Royal maroon + gold |
+<p align="center">
+  <img src="previews/pc.png" width="48%" alt="Desktop — light editor">
+  <img src="previews/pc-dark.png" width="48%" alt="Desktop — dark editor">
+</p>
+<p align="center"><sub>Light + dark editor. The A4 cover always stays white for print/PDF.</sub></p>
 
-## Features
+---
 
-- Live A4 preview while typing (PC + mobile)
-- 1-page PDF download (high-resolution) + Print
-- Faculty-wise auto logo (4 faculties) or custom logo upload
-- University logo upload + watermark with opacity control
-- Date shows only when picked; blank-safe fallbacks everywhere
-- 100% client-side — no server needed
+## 🎨 Cover designs
 
-## Run locally
+Click a card — the live preview switches instantly.
+
+| Standard Report | Assignment / Report | Other Varsity |
+| :---: | :---: | :---: |
+| ![Standard Report](previews/design-1.png) | ![Assignment — navy](previews/design-2.png) | ![Other Varsity — maroon + gold](previews/design-3.png) |
+| Official EBAUB lab-report format | Classic navy blue | Royal maroon + gold |
+
+---
+
+## ✨ Features
+
+- **Live A4 preview** while typing (PC + mobile), auto-scaled to your screen, with zoom (`−` / `+` / Fit)
+- **1-page PDF download** (html2canvas @ 3×, JPEG) + Print button
+- **3 polished cover designs**, one-click switch with visual picker cards
+- **Faculty-wise auto logo** (Engineering, Agriculture, Business, Law, …) or upload your own
+- **University logo** + **Dept logo** upload (university first) + watermark with opacity slider
+- **Date shows only when picked**; blank-safe fallbacks everywhere
+- **Light / dark editor theme** (moon/sun toggle, remembered in `localStorage`) — cover page never goes dark
+- **Mobile Editor / Preview tabs** so the A4 still fits on a phone
+- **100% client-side** — nothing is uploaded, no server needed
+
+---
+
+## ⚡ How it works
+
+1. **Pick a design** — Standard Report, Assignment/Report, or Other Varsity
+2. **Fill the form** — course, student, teacher… the A4 on the right updates live
+3. **PDF Download** or **Print** — always one page, 210 × 297 mm
+
+---
+
+## 💻 Run locally
 
 Just open `index.html` in any browser (double-click). No build step.
 
@@ -33,58 +61,69 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-## Project structure
+---
+
+## 🗂 Project structure
 
 ```
 cover-manager/
-├── index.html          # form + preview + footer
-├── css/style.css       # site + all 3 cover designs
-├── js/app.js           # templates, live preview, PDF export
-├── assets/             # header logo, EXIM + faculty logos
+├── index.html          # form + live preview + actions
+├── css/style.css       # app UI + all 3 cover designs (PDF-safe)
+├── js/app.js           # templates, live preview, PDF export, uploads
+├── assets/             # header logo, EXIM seal, faculty logos
 ├── vendor/             # offline libs (html2canvas, jsPDF) — do not delete
+├── previews/           # screenshots used in this README
 └── README.md
 ```
 
 > The `vendor/` folder must stay beside `index.html`, otherwise PDF download won't work offline.
 
-## Deploy free (GitHub Pages)
+---
+
+## 🚀 Deploy free (GitHub Pages)
 
 1. Upload all files to your repo (`MaksBloxX/EBAUB-Cover-Manager`)
-2. Repo → Settings → Pages → Deploy from branch → `main` / root
+2. Repo → **Settings → Pages** → Deploy from branch → `main` / root
 3. Your site goes live at [`https://maksbloxx.github.io/EBAUB-Cover-Manager/`](https://maksbloxx.github.io/EBAUB-Cover-Manager/)
 
 Also works on Netlify Drop, Vercel, Tiiny.host — just drag & drop the folder.
 
+---
 
-## Developer note: PDF-safe CSS
+## 🛠 Developer note: PDF-safe CSS
 
-PDF is rendered with `html2canvas`, which doesn't support everything. In cover CSS avoid:
+The PDF is rendered with `html2canvas` of `#coverPage`, which doesn't support everything.
+Inside `.a4` (the A4 page) the CSS intentionally avoids:
 
 - CSS variables (`var(--x)`), CSS grid, flex `gap`
 - `object-fit` on fixed-size logo boxes (it gets ignored — match the box to the image aspect instead)
 - `display:inline-block` + `% width` combos (use block + `margin:auto`)
 
 Safe: tables, flex rows/columns, literal colors, margins, padding.
+The surrounding app UI (`body`, cards, form, dark theme) may use any modern CSS — it is never captured.
 
-## Credits
+---
 
-Developed by **Md. Makshedul Islam**
+## 📱 Mobile preview
+
+Editor tab and Preview tab. Drop your two screenshots here:
+
+<!-- add these two files yourself:
+     previews/mobile-1.png  →  phone, Editor tab
+     previews/mobile-2.png  →  phone, Preview tab
+-->
+
+<p align="center">
+  <img width="280" alt="Mobile — Editor tab" src="previews/mobile-1.png">
+  &nbsp;&nbsp;
+  <img width="280" alt="Mobile — Preview tab" src="previews/mobile-2.png">
+</p>
+
+---
+
+## 🙏 Credits
+
+Developed by **Md. Makshedul Islam** — CSE, EBAUB  
 Questions or suggestions? [Open an issue](https://github.com/MaksBloxX/EBAUB-Cover-Manager/issues)
 
 Free to use for educational purposes.
-
-## Previews
-
-### For PC/Laptop:
-
-<img width="1240" height="1354" alt="image" src="https://github.com/user-attachments/assets/871084e4-59e8-4f21-aa01-5e8cc211d8c2" />
-
-
-### For Mobile:
-
-<img width="360" height="1569" alt="image" src="https://github.com/user-attachments/assets/33dab14e-4ce1-48cb-8342-ebf2ed9782b0" />
-
-
-<img width="360" height="835" alt="image" src="https://github.com/user-attachments/assets/cc38a0fc-ca17-4afd-b496-02e67989e680" />
-
-

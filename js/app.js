@@ -367,3 +367,23 @@ function switchTab(which) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
+
+/* ---------------- GUI v2 shell: design cards + theme (engine untouched) ---------------- */
+function pickDesign(tpl) {
+  setTemplate(tpl);
+  document.querySelectorAll(".design-card").forEach(c => c.classList.toggle("active", c.dataset.tpl === tpl));
+  const pl = $("previewLabel");
+  if (pl) pl.textContent = "Live preview — " + TPL_NAMES[tpl];
+}
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  try { localStorage.setItem("ebaub-theme", t); } catch (e) {}
+}
+(function initShell() {
+  document.querySelectorAll(".design-card").forEach(c => c.classList.toggle("active", c.dataset.tpl === state.template));
+  let saved = null;
+  try { saved = localStorage.getItem("ebaub-theme"); } catch (e) {}
+  if (saved === "dark" || saved === "light") document.documentElement.dataset.theme = saved;
+  const tt = $("themeToggle");
+  if (tt) tt.addEventListener("click", () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark"));
+})();
