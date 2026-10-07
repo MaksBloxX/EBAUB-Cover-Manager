@@ -51,11 +51,10 @@ cover-manager/
 
 1. Upload all files to your repo (`MaksBloxX/EBAUB-Cover-Manager`)
 2. Repo → Settings → Pages → Deploy from branch → `main` / root
-3. Your site goes live at `https://maksbloxx.github.io/EBAUB-Cover-Manager/`
+3. Your site goes live at [`https://maksbloxx.github.io/EBAUB-Cover-Manager/`](https://maksbloxx.github.io/EBAUB-Cover-Manager/)
 
 Also works on Netlify Drop, Vercel, Tiiny.host — just drag & drop the folder.
 
-Here is [Click me](https://maksbloxx.github.io/EBAUB-Cover-Manager/)
 
 ## Developer note: PDF-safe CSS
 
