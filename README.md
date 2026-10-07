@@ -108,15 +108,14 @@ The surrounding app UI (`body`, cards, form, dark theme) may use any modern CSS 
 
 Editor tab and Preview tab. Drop your two screenshots here:
 
-<!-- add these two files yourself:
-     previews/mobile-1.png  →  phone, Editor tab
-     previews/mobile-2.png  →  phone, Preview tab
--->
+
 
 <p align="center">
   <img width="280" alt="Mobile — Editor tab" src="previews/mobile-1.png">
   &nbsp;&nbsp;
-  <img width="280" alt="Mobile — Preview tab" src="previews/mobile-2.png">
+  <img width="280" alt="Mobile — Editor tab" src="previews/mobile-2.png">
+  &nbsp;&nbsp;
+  <img width="280" alt="Mobile — Preview tab" src="previews/mobile-3.png">
 </p>
 
 ---
